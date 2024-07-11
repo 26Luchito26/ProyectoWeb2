@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Registrarse{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'ProyectoWebApp/css/bloqueado.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <div class="background-image"></div>
+
+  <div id="bubblesContainer"></div>
+
+  <div class="logo-empresa">
+    <img src="{% static 'ProyectoWebApp/img/logo.png' %}" alt="Logo de la empresa" width="200px" height="180px">
+  </div>
+
+  <div class="contenedor_principal">
+    <div class="contenido_principal">
+      {% if not user.is_authenticated %}
+        <div class="message">
+          <h1>Debes registrarte e iniciar sesión para realizar y exportar solicitudes.</h1>
+        </div>
+      {% endif %}
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+ 
+  <div class="capa"></div>
+  
+
+  {% block extra_scripts %}{% endblock %}
+  <script src="{% static 'ProyectoWebApp/js/animacion_objetos.js' %}"></script>
+</body>
+</html>
